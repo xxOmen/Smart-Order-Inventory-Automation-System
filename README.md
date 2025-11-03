@@ -1,31 +1,40 @@
-# 🚀 Automated Order & Inventory Management System (Plumbing Business)
+# 🚀 Smart Order & Inventory Automation System
 
-This project automates the **entire order-to-restock workflow** for a small business using **Google Sheets, HTML, Gmail, and Google Forms** — no ERP or paid tools required.  
+An intelligent, end-to-end **Order and Inventory Management System** built for a **plumbing business**, fully powered by **Google Sheets, Gmail, Google Forms, HTML**, and **n8n automation workflow**.
 
----
-
-## 💡 Overview
-
-When a **customer places an order** through the plumbing website, the system automatically:
-1. Adds the order details into **Google Sheets**.
-2. Updates inventory levels in real time using formulas.
-3. Triggers **auto reorder emails** to vendors when stock hits the restock threshold.
-4. Collects vendor responses through a **Google Form**.
-5. Updates the **expected restock date** automatically in the same sheet.
-
-The result:  
-⚙️ 100% automation — from customer order → inventory update → vendor restock confirmation.
+This project automates everything — from **customer orders to vendor restocks** — using Google Workspace tools and no expensive ERP software.
 
 ---
 
-## ⚙️ Workflow
+## 🧩 Overview
 
-**Step 1:** Customer places an order via `index.html` form.  
-**Step 2:** Data sent to **Google Apps Script (appscript.gs)**.  
-**Step 3:** Script writes order details into Google Sheets.  
-**Step 4:** Google Sheets formulas auto-calculate stock and reorder status.  
-**Step 5:** Gmail automation sends reorder email with Google Form link to vendor.  
-**Step 6:** Vendor fills the form, and the sheet auto-updates with the restock date.
+When a customer places an order on the website, the system automatically:
+
+1. Logs the order into **Google Sheets**.  
+2. Updates stock quantity in real time using formulas.  
+3. Checks the **restock threshold** and triggers a reorder if needed.  
+4. Sends an **automatic email to the vendor** requesting new stock.  
+5. The vendor receives a **Google Form** to confirm delivery details.  
+6. Once submitted, the **restock date** updates automatically in the sheet.  
+
+✅ 100% automation — no manual tracking, no missed reorders.
+
+---
+
+## ⚙️ System Workflow
+
+Below is the workflow automation built in **n8n**, integrating Google Sheets, Gmail, AI, and conditional logic for smart decision-making:
+
+![Smart Order & Inventory Automation System](assets/images/N8N%20Workflow%20Smart%20Order%20%26%20Inventory%20Automation%20System.png)
+
+---
+
+## 🎬 Demo Video
+
+🎥 **Watch Full Project in Action:**  
+[▶️ Click Here to View Demo on Google Drive](https://drive.google.com/file/d/12VM9dR3X4_2E6tWzH-CtY2XsaE-dvfp8/view?usp=sharing)
+
+*(The demo showcases the entire loop — customer order → stock update → reorder email → vendor form → restock confirmation.)*
 
 ---
 
@@ -33,23 +42,24 @@ The result:
 
 | Technology | Purpose |
 |-------------|----------|
-| **HTML + JS** | Customer order interface |
+| **HTML + JS** | Customer order form (frontend) |
 | **Google Sheets** | Inventory database + formulas |
-| **Google Apps Script** | Backend automation |
-| **Gmail API** | Auto email notifications |
-| **Google Forms** | Vendor confirmation |
-| **Google Workspace Automation** | Real-time triggers and updates |
+| **Google Apps Script** | Backend automation logic |
+| **Gmail API** | Automated reorder emails |
+| **Google Forms** | Vendor restock confirmation |
+| **n8n Automation** | Workflow orchestration |
+| **OpenAI LLM** | Smart decision logic integration |
 
 ---
 
-## 🧾 Key Formulas
+## 🧾 Key Google Sheets Formulas
 
 ```excel
-# Current Stock
-=ARRAYFORMULA(B2:B - D2:D)
+# Auto stock update
+=ARRAYFORMULA(Initial_Stock - SUMIF(OrderRange, ItemName, QuantityRange))
 
-# Reorder Trigger
-=IF(E2 <= F2, "REORDER", "OK")
+# Restock alert
+=IF(Current_Stock <= Restock_Level, "REORDER", "OK")
 
-# Expected Restock Date
+# Expected restock date from vendor form
 =IF(G2="REORDER", VLOOKUP(A2, Vendor_Form!A:C, 3, FALSE), "")
