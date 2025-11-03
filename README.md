@@ -25,7 +25,7 @@ When a customer places an order on the website, the system automatically:
 
 Below is the automation flow created in **n8n**, integrating Google Sheets, Gmail, AI logic, and conditional steps for end-to-end automation 👇  
 
-<img width="878" height="479" alt="Smart Order & Inventory Automation Workflow" src="https://github.com/user-attachments/assets/c16e2b2a-4459-4b8e-b69a-4d7922115ca3" />
+<img width="878" height="479" alt="Smart Order & Inventory Automation Workflow" src="https://github.com/xxOmen/Smart-Order-Inventory-Automation-System/blob/main/N8N%20Workflow%20Smart%20Order%20%26%20Inventory%20Automation%20System.png?raw=true" />
 
 ---
 
