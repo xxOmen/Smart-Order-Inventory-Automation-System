@@ -25,7 +25,7 @@ When a customer places an order on the website, the system automatically:
 
 Below is the workflow automation built in **n8n**, integrating Google Sheets, Gmail, AI, and conditional logic for smart decision-making:
 
-![Smart Order & Inventory Automation System](assets/images/N8N%20Workflow%20Smart%20Order%20%26%20Inventory%20Automation%20System.png)
+![Smart Order & Inventory Automation System](main/N8N%20Workflow%20Smart%20Order%20%26%20Inventory%20Automation%20System.png)
 
 ---
 
